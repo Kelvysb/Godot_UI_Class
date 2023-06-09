@@ -4,7 +4,8 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var TURN_SPEED = 10
-@export var vidas = 1
+@export var vidas = 10
+@export var hpMax = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -14,6 +15,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var geometry = $Geometry
 @onready var menu_pausa = $MenuPausa
 @onready var hud = $HUD
+
+func _ready():
+	hud.hpMax = hpMax;
 
 func _input(event):
 	if event is InputEventMouseButton:
