@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://clhvx8ppql8ya"]
+
+[ext_resource type="Script" path="res://MenuInicial.gd" id="1_lgivd"]
+[ext_resource type="Theme" uid="uid://c63j08dh8pl5u" path="res://tema_botao.tres" id="2_w2gyq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_exmh3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qtmdq"]
+noise = SubResource("FastNoiseLite_exmh3")
+
+[node name="MenuInicial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lgivd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_qtmdq")
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -20.0
+offset_right = 69.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartGame" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("2_w2gyq")
+text = "Start Game"
+
+[node name="Exit" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("2_w2gyq")
+text = "Sair"
+
+[connection signal="pressed" from="VFlowContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VFlowContainer/Exit" to="." method="_on_exit_pressed"]

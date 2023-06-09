@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://beejv2hdck1ia"]
+
+[ext_resource type="Texture2D" uid="uid://cfoxcbp38or6l" path="res://TextureFloor.tres" id="1_e2yc5"]
+[ext_resource type="PackedScene" uid="uid://b0qbei7ssbdr1" path="res://Player.tscn" id="2_paf7f"]
+[ext_resource type="PackedScene" uid="uid://n8vmlra3177d" path="res://Inimigo.tscn" id="3_tumw7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p4vsf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y44pp"]
+sky_material = SubResource("ProceduralSkyMaterial_p4vsf")
+
+[sub_resource type="Environment" id="Environment_exxmj"]
+background_mode = 2
+sky = SubResource("Sky_y44pp")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0bbgs"]
+
+[sub_resource type="Gradient" id="Gradient_h3w0j"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0894309)
+colors = PackedColorArray(0.239886, 0.46276, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bdv2f"]
+noise_type = 2
+frequency = 0.053
+fractal_type = 0
+cellular_distance_function = 2
+cellular_return_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xvg0i"]
+width = 2048
+height = 2048
+color_ramp = SubResource("Gradient_h3w0j")
+noise = SubResource("FastNoiseLite_bdv2f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i08iy"]
+albedo_texture = ExtResource("1_e2yc5")
+emission_enabled = true
+emission_texture = SubResource("NoiseTexture2D_xvg0i")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bwxa4"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Main" type="Node3D"]
+transform = Transform3D(0.998581, 0, 0, 0, 0.998581, 0, 0, 0, 0.998581, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_exxmj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(68.4115, 0, 0, 0, 1, 0, 0, 0, 68.4115, 0, 0, 0)
+mesh = SubResource("PlaneMesh_0bbgs")
+surface_material_override/0 = SubResource("StandardMaterial3D_i08iy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bwxa4")
+
+[node name="Player" parent="." instance=ExtResource("2_paf7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9184, 0, 24.4342)
+
+[node name="Inimigo" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1996, 15.2147, 19.4803)
+
+[node name="Inimigo2" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1173, 15.2147, 19.4803)
+
+[node name="Inimigo3" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1173, 15.2147, 23.2064)
+
+[node name="Inimigo4" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.838628, 15.2147, 23.2064)
+
+[node name="Inimigo5" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.838628, 15.2147, 14.536)
+
+[node name="Inimigo6" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1027, 15.2147, 14.536)
+
+[node name="Inimigo7" parent="." instance=ExtResource("3_tumw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1027, 15.2147, 20.0722)

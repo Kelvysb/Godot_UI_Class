@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://n8vmlra3177d"]
+
+[ext_resource type="Script" path="res://Inimigo.gd" id="1_hyjed"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iokpe"]
+bounce = 0.85
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o4ycm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5x2m3"]
+
+[node name="Inimigo" type="RigidBody3D" groups=["inimigo"]]
+physics_material_override = SubResource("PhysicsMaterial_iokpe")
+script = ExtResource("1_hyjed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_o4ycm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5x2m3")
+skeleton = NodePath("")

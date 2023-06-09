@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshq8sjavjvvh"]
+
+[ext_resource type="Script" path="res://MenuPausa.gd" id="1_4xxt8"]
+[ext_resource type="Theme" uid="uid://c63j08dh8pl5u" path="res://tema_botao.tres" id="2_hywfj"]
+
+[node name="MenuPausa" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4xxt8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.243137)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -129.0
+offset_right = 20.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("2_hywfj")
+text = "Continue"
+
+[node name="Salir" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("2_hywfj")
+text = "Salir"
+
+[connection signal="pressed" from="VFlowContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VFlowContainer/Salir" to="." method="_on_salir_pressed"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://i6ho3jlefjg4"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_ng24q"]
+[ext_resource type="Theme" uid="uid://c63j08dh8pl5u" path="res://tema_botao.tres" id="1_wqdpj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f6tj2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1qud5"]
+noise = SubResource("FastNoiseLite_f6tj2")
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ng24q")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_1qud5")
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -20.0
+offset_right = 118.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("1_wqdpj")
+text = "Game Over"
+
+[node name="StartGame" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("1_wqdpj")
+text = "Restart Game"
+
+[node name="Exit" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("1_wqdpj")
+text = "Sair"
+
+[connection signal="pressed" from="VFlowContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VFlowContainer/Exit" to="." method="_on_exit_pressed"]

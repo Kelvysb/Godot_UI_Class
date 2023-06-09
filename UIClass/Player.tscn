@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0qbei7ssbdr1"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ll24j"]
+[ext_resource type="PackedScene" uid="uid://dshq8sjavjvvh" path="res://MenuPausa.tscn" id="2_57xf5"]
+[ext_resource type="PackedScene" uid="uid://t6brusksr12q" path="res://HUD.tscn" id="3_e0eik"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cld3f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yfmuq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7iii8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_usp8l"]
+radius = 0.7392
+height = 2.55819
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ll24j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00667, 0)
+shape = SubResource("CapsuleShape3D_cld3f")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00437, 0)
+mesh = SubResource("CapsuleMesh_yfmuq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(0.00923256, 0.0183845, 0.685328, -0.414822, 0.000409178, 0.0152531, -9.31323e-10, -0.38145, 0.0330468, 0.00517825, 1.49673, -0.253992)
+mesh = SubResource("CylinderMesh_7iii8")
+
+[node name="CameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50009, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863739, 3.75674)
+
+[node name="HUD" parent="." instance=ExtResource("3_e0eik")]
+
+[node name="MenuPausa" parent="." instance=ExtResource("2_57xf5")]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00187, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_usp8l")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
