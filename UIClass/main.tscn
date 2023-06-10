@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://beejv2hdck1ia"]
+[gd_scene load_steps=15 format=3 uid="uid://beejv2hdck1ia"]
 
 [ext_resource type="Texture2D" uid="uid://cfoxcbp38or6l" path="res://TextureFloor.tres" id="1_e2yc5"]
 [ext_resource type="PackedScene" uid="uid://b0qbei7ssbdr1" path="res://Player.tscn" id="2_paf7f"]
 [ext_resource type="PackedScene" uid="uid://n8vmlra3177d" path="res://Inimigo.tscn" id="3_tumw7"]
+[ext_resource type="PackedScene" uid="uid://cfluc2h4yc2pr" path="res://Cura.tscn" id="4_ad1xi"]
+[ext_resource type="PackedScene" uid="uid://d1jefljdlcjee" path="res://SuperCura.tscn" id="5_3ttl3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p4vsf"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -88,3 +90,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1027, 15.2147, 14.536)
 
 [node name="Inimigo7" parent="." instance=ExtResource("3_tumw7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1027, 15.2147, 20.0722)
+
+[node name="Cura" parent="." instance=ExtResource("4_ad1xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0156, 0, 8.01137)
+
+[node name="Cura2" parent="." instance=ExtResource("4_ad1xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8438, 0, -26.4312)
+
+[node name="Cura3" parent="." instance=ExtResource("4_ad1xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4125, 0, 4.11525)
+
+[node name="Cura4" parent="." instance=ExtResource("4_ad1xi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5489, 1.90735e-06, 35.3662)
+
+[node name="Cura5" parent="." instance=ExtResource("5_3ttl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0156, 0, 21.0298)
+
+[node name="Cura6" parent="." instance=ExtResource("5_3ttl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50448, 0, 14.464)
+
+[node name="Cura7" parent="." instance=ExtResource("5_3ttl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3402, 0, 34.6179)

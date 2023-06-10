@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://t6brusksr12q"]
+[gd_scene load_steps=3 format=3 uid="uid://t6brusksr12q"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_58x5k"]
 [ext_resource type="Theme" uid="uid://t0v0hguur8ik" path="res://TemaLabel.tres" id="2_l17tm"]
-[ext_resource type="Theme" uid="uid://c5qbxiev7puc0" path="res://tema_bar.tres" id="3_nyr6h"]
-[ext_resource type="Texture2D" uid="uid://cr87y3h7yvvs0" path="res://Heart.png" id="4_5cpq7"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -30,24 +28,7 @@ layout_mode = 2
 theme = ExtResource("2_l17tm")
 text = "Vidas:"
 
-[node name="Vidas" type="ProgressBar" parent="HFlowContainer"]
-visible = false
+[node name="Vidas" type="HFlowContainer" parent="HFlowContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-theme = ExtResource("3_nyr6h")
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
-
-[node name="Hp1" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 623.0
-offset_top = 37.0
-offset_right = 1136.0
-offset_bottom = 71.0
-size_flags_horizontal = 3
-texture = ExtResource("4_5cpq7")
-expand_mode = 2
-stretch_mode = 1
+size_flags_stretch_ratio = 15.41

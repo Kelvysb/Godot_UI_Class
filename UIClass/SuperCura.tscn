@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1jefljdlcjee"]
+
+[ext_resource type="Script" path="res://SuperCura.gd" id="1_dgo6o"]
+[ext_resource type="Texture2D" uid="uid://cr87y3h7yvvs0" path="res://Heart.png" id="2_wvcg8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n0wk8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ho5cu"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+diffuse_mode = 3
+albedo_texture = ExtResource("2_wvcg8")
+metallic = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+rim_tint = 0.61
+backlight = Color(1, 1, 1, 1)
+texture_filter = 0
+billboard_keep_scale = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ccr58"]
+radius = 1.34793
+
+[node name="Cura" type="Node3D"]
+script = ExtResource("1_dgo6o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.00041, 0)
+mesh = SubResource("PlaneMesh_n0wk8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ho5cu")
+
+[node name="Area3D" type="Area3D" parent="." groups=["cura"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.987246, 0)
+shape = SubResource("SphereShape3D_ccr58")

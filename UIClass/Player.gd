@@ -18,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	hud.hpMax = hpMax;
+	get_tree().call_group('inimigo', 'AddPlayer', self)
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -73,3 +74,10 @@ func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 func game_over():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file("res://GameOver.tscn")
+
+
+func _on_area_3d_area_entered(area):
+	if(area.is_in_group("cura")):
+		if(vidas < hpMax):
+			vidas += (area.get_parent() as Cura).valor
+		area.get_parent().queue_free()
